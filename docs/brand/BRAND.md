@@ -1,11 +1,11 @@
 # Untax brand guidelines
 
-**Untax** (formerly Parachute) catches money deadlines (free trials) and walks you out of freeze mode, one tiny step at a time. Every win lands on the **ADHD Tax Refunded** receipt.
+**Untax** catches money deadlines (free trials) and walks you out of freeze mode, one tiny step at a time. Every win lands on the **ADHD Tax Refunded** receipt.
 
 - **Tagline:** Get your ADHD tax back.
 - **Short pitch:** Untax catches your free trials before they charge you, and gets you unstuck when you freeze.
 - **Name usage:** always lowercase `untax` in the wordmark; "Untax" in sentences. Never "UnTax", "UNTAX", or "Un-tax".
-- **Modes inside the app:** *Untax* (money deadlines) and *Unfreeze* (the step-by-step player). "Parachute" is retired from all user-facing copy. Code module names (`ParachuteKit`, etc.) stay as they are.
+- **Modes inside the app:** *Untax* (money deadlines) and *Unfreeze* (the step-by-step player).
 
 ## Logo
 

@@ -10,7 +10,7 @@ public struct TaskPlayerView: View {
     let onClose: () -> Void
 
     @Environment(\.modelContext) private var context
-    @Environment(\.parachute) private var services
+    @Environment(\.untax) private var services
 
     public init(task: FrozenTask, onClose: @escaping () -> Void) {
         self.task = task

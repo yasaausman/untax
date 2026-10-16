@@ -1,6 +1,6 @@
 import Foundation
 
-/// Returns a fixed 5-step plan. Swap for ParachuteKit's UnfreezeEngine once B3 lands.
+/// Returns a fixed 5-step plan. Swap for UntaxKit's UnfreezeEngine once B3 lands.
 public struct FakeUnfreezeProvider: UnfreezeProviding {
     public init() {}
 

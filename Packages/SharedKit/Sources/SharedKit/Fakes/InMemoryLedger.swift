@@ -1,6 +1,6 @@
 import Foundation
 
-/// Keeps records in memory. Swap for ParachuteKit's SwiftData ledger once B6 lands.
+/// Keeps records in memory. Swap for UntaxKit's SwiftData ledger once B6 lands.
 public actor InMemoryLedger: CompletionLedger {
     public struct Entry: Sendable, Hashable {
         public var kind: CompletionKind

@@ -1,13 +1,13 @@
 import AppIntents
 import MoneyKit
-import ParachuteKit
+import UntaxKit
 import SharedKit
 import SwiftData
 import SwiftUI
 import UserNotifications
 
 @main
-struct ParachuteApp: App {
+struct UntaxApp: App {
     @State private var dependencies: AppDependencies
     private let container: ModelContainer
 
@@ -31,7 +31,7 @@ struct ParachuteApp: App {
                 .environment(\.moneyEscalation, dependencies.moneyEscalation)
                 .environment(\.completionLedger, dependencies.ledger)
                 .environment(\.proEntitlements, dependencies.pro)
-                .environment(\.parachute, dependencies.parachute)
+                .environment(\.untax, dependencies.untax)
                 .task { await dependencies.pro.start() }
         }
         .modelContainer(container)
@@ -39,7 +39,7 @@ struct ParachuteApp: App {
 }
 
 /// Pulls App Intents (the alarm's Stop/Decide intents) out of the local packages.
-struct ParachuteAppIntentsPackage: AppIntentsPackage {
+struct UntaxAppIntentsPackage: AppIntentsPackage {
     static var includedPackages: [any AppIntentsPackage.Type] {
         [MoneyKitIntentsPackage.self]
     }

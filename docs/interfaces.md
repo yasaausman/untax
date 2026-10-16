@@ -9,8 +9,8 @@ These live in `Packages/SharedKit`. **Both devs code against these, never agains
 ## Package dependency rule
 ```
 App (composition root) ──► MoneyKit (A) ──► SharedKit
-                       └─► ParachuteKit (B) ──► SharedKit
-MoneyKit ✗ ParachuteKit   (never import each other; the App target wires them together)
+                       └─► UntaxKit (B) ──► SharedKit
+MoneyKit ✗ UntaxKit   (never import each other; the App target wires them together)
 ```
 
 ## 1. Models (SwiftData, stored in the App Group container)
@@ -76,7 +76,7 @@ public protocol EscalationScheduling: Sendable {
 }
 public enum EscalationKind: Sendable { case money(amountCents: Int), task }
 
-// Implemented by B (ParachuteKit). Used by the App when Decide → "I'm frozen".
+// Implemented by B (UntaxKit). Used by the App when Decide → "I'm frozen".
 public protocol UnfreezeProviding: Sendable {
     func plan(for request: UnfreezeRequest) async throws -> UnfreezePlan
 }
@@ -102,7 +102,7 @@ public protocol EntitlementsProviding: Sendable {
     @MainActor func presentPaywall()
 }
 
-// Implemented by B (ParachuteKit). Written to by A and B.
+// Implemented by B (UntaxKit). Written to by A and B.
 public protocol CompletionLedger: Sendable {
     func record(kind: CompletionKind, title: String, amountCents: Int?) async
 }
@@ -117,7 +117,7 @@ public protocol CompletionLedger: Sendable {
 
 ## 3. UI hand-off (App target wires it)
 ```swift
-// A's Decide screen never imports ParachuteKit. It just calls a closure:
+// A's Decide screen never imports UntaxKit. It just calls a closure:
 DecideView(itemID: id, onFrozen: { request in router.sheet = .unfreeze(request, itemID: id) })   // as built (A5)
 
 // B provides the player:
@@ -133,7 +133,7 @@ UnfreezeView(plan: UnfreezePlan, onFinish: (UnfreezeOutcome) -> Void)
 `SharedKit.AppleSubscriptions.steps(serviceName:)` returns Apple Support's cancel steps as `[PlanStep]`; `manageURL` is the deep link (✅ opens Subscriptions on iPhone, 2026-09-28) and `webURL` Apple's web page. B3 can return `UnfreezePlan(steps: AppleSubscriptions.steps(...), source: .appleSubscriptions, isSuggested: false)`.
 
 ### As implemented (B, 2026-09-27)
-- ParachuteKit reads everything from one environment value, `\.parachute` (`ParachuteServices`: `UnfreezeEngine`, ledger, scheduler, entitlements), set in `ParachuteApp`.
+- UntaxKit reads everything from one environment value, `\.untax` (`UntaxServices`: `UnfreezeEngine`, ledger, scheduler, entitlements), set in `UntaxApp`.
 - **For A5's 🧊 I'm frozen**, present `UnfreezeFlowView` full screen. It fetches the plan and plays it; the caller records the decision:
   ```swift
   .fullScreenCover(item: $frozen) { request in
@@ -142,8 +142,8 @@ UnfreezeView(plan: UnfreezePlan, onFinish: (UnfreezeOutcome) -> Void)
       }
   }
   ```
-  MoneyKit doesn't import ParachuteKit, so either A5 takes an `onFrozen` closure and `App/` presents this, or `App/` wraps `DecideView`.
-  **Done (A, 2026-09-27):** `DecideView(itemID:onFrozen:)` → `SheetRouter.unfreeze(_:itemID:)` closes the Decide sheet and opens `App/UnfreezeHost.swift` full screen, which plays `UnfreezeFlowView` with `win: .money(cents:)` and applies `DeadlineDecision` (`.completed` → cancelled + ledger + resolve; `.snoozed` → snooze). `ProEntitlements` now backs `ParachuteServices.entitlements`, so B's upsell opens A's paywall.
+  MoneyKit doesn't import UntaxKit, so either A5 takes an `onFrozen` closure and `App/` presents this, or `App/` wraps `DecideView`.
+  **Done (A, 2026-09-27):** `DecideView(itemID:onFrozen:)` → `SheetRouter.unfreeze(_:itemID:)` closes the Decide sheet and opens `App/UnfreezeHost.swift` full screen, which plays `UnfreezeFlowView` with `win: .money(cents:)` and applies `DeadlineDecision` (`.completed` → cancelled + ledger + resolve; `.snoozed` → snooze). `ProEntitlements` now backs `UntaxServices.entitlements`, so B's upsell opens A's paywall.
 - `CelebrationView(win: .money(cents:)) { }` is public if you want confetti on a plain Cancel too.
 - **Task reminders:** `DecideRouter` receives task IDs too (B5). `App/RootView.swift`'s `DecideRoute` opens the task player for a `FrozenTask` ID and `DecideView` otherwise, so Decide never sees a task ID.
 - **Engine order:** curated → Apple settings → AI → template. An Apple-billed trial skips *web* curated steps (rule 8); curated ids starting `apple-` count as Apple's own. ⚠️ A: if you'd rather mark this in the JSON (e.g. `"billing": "apple"`), that's a SharedKit change; let's agree first. **A (2026-09-27):** the `apple-` prefix is fine for the sprint. B3's `appleSubscriptionSteps` duplicates `SharedKit.AppleSubscriptions.steps` (same Apple Support source); worth switching to the shared one later so the two can't drift.

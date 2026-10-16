@@ -5,7 +5,7 @@ import SwiftUI
 import UIKit
 
 /// Dev B's debug tools (Home → ladybug): seed demo data (P2) and run the B0 atomizer spike.
-struct ParachuteDebugView: View {
+struct UntaxDebugView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
     @State private var seeded = false
@@ -19,7 +19,7 @@ struct ParachuteDebugView: View {
                         seeded = true
                     }
                 } footer: {
-                    Text(seeded ? "Seeded: $214.89 back · 12 tasks · best run 5 days." : "Replaces Parachute's wins and tasks. Adds trials only if there are none.")
+                    Text(seeded ? "Seeded: $214.89 back · 12 tasks · best run 5 days." : "Replaces Untax's wins and tasks. Adds trials only if there are none.")
                 }
                 Section {
                     NavigationLink("Run B0 atomizer spike") { AtomizerSpikeView() }
@@ -27,7 +27,7 @@ struct ParachuteDebugView: View {
                     Text("Runs the 30 inputs from docs/b0-atomizer-spike.md on this iPhone's on-device model.")
                 }
             }
-            .navigationTitle("Parachute debug")
+            .navigationTitle("Untax debug")
             .toolbar { Button("Done") { dismiss() } }
         }
     }

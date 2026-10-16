@@ -18,24 +18,24 @@ Prompt, schema, and the on-device quality check: `docs/b0-atomizer-spike.md`.
 ```mermaid
 flowchart TD
     %% App Target
-    App["Parachute.xcodeproj\n(App target — thin composition root)"]
+    App["Untax.xcodeproj\n(App target — thin composition root)"]
 
     %% Packages & Extensions
     SharedKit["SharedKit\n(models, protocols, design system, CancelSteps.json)"]
     MoneyKit["MoneyKit (Dev A)\n(capture, escalation, alarm, decide, paywall)"]
-    ParachuteKit["ParachuteKit (Dev B)\n(unfreeze engine, AI atomizer, task path, audio, scoreboard)"]
+    UntaxKit["UntaxKit (Dev B)\n(unfreeze engine, AI atomizer, task path, audio, scoreboard)"]
     Widgets["Widgets (Dev B)\n(countdown + step widgets)"]
     ShareExtension["ShareExtension (Dev A)\n(screenshot capture)"]
 
     %% Dependencies
     App --> SharedKit
     App --> MoneyKit
-    App --> ParachuteKit
+    App --> UntaxKit
     Widgets --> SharedKit
     ShareExtension --> SharedKit
     ShareExtension --> MoneyKit
     MoneyKit -.->|Code against protocols| SharedKit
-    ParachuteKit -.->|Code against protocols| SharedKit
+    UntaxKit -.->|Code against protocols| SharedKit
 
     %% Data Flow - Money Path
     subgraph MoneyPath [Money Path]
@@ -59,7 +59,7 @@ flowchart TD
 
 ### The Unfreeze Engine
 
-`UnfreezeEngine` (ParachuteKit) builds an `UnfreezePlan` for a request.
+`UnfreezeEngine` (UntaxKit) builds an `UnfreezePlan` for a request.
 
 **Cancel a service**, in this order:
 

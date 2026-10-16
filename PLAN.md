@@ -1,4 +1,4 @@
-# PLAN.md: Untax (formerly Parachute)
+# PLAN.md: Untax
 
 > **The ADHD follow-through engine.** Untax catches the money deadlines your brain loses, nudges until you act, and when you freeze, on a cancellation or an essay, walks you through one tiny step at a time. **Pull the cord.**
 
@@ -148,15 +148,15 @@ Only real dollars count (cancelled before the charge). No "streak lost" messagin
 
 ## 8. Architecture
 ```
- Parachute.xcodeproj ── thin App target (composition root) · Widgets (B) · ShareExtension (A)
+ Untax.xcodeproj ── thin App target (composition root) · Widgets (B) · ShareExtension (A)
         │ injects protocol implementations
         ▼
  Packages/
   ├── SharedKit     (A+B) models · protocols · design system · CancelSteps.json resource
   ├── MoneyKit      (A)   capture/extraction · EscalationScheduler · AlarmKit · Decide · Entitlements(RevenueCat) · Paywall
-  └── ParachuteKit  (B)   UnfreezeEngine · atomizer · UnfreezePlayer UI · task path · audio · Scoreboard/Ledger
- Rules: MoneyKit and ParachuteKit never import each other; both depend only on SharedKit.
-        The App target wires them together (Decide "I'm frozen" → ParachuteKit's UnfreezeView).
+  └── UntaxKit  (B)   UnfreezeEngine · atomizer · UnfreezePlayer UI · task path · audio · Scoreboard/Ledger
+ Rules: MoneyKit and UntaxKit never import each other; both depend only on SharedKit.
+        The App target wires them together (Decide "I'm frozen" → UntaxKit's UnfreezeView).
 ```
 Contracts: `docs/interfaces.md`. This split means two people rarely edit the same files, and it gives judges a clean-architecture story (criterion 4).
 
@@ -164,13 +164,13 @@ Contracts: `docs/interfaces.md`. This split means two people rarely edit the sam
 
 ## 9. Project structure
 ```
-untax/                             (repo; code names keep Parachute)
+untax/                             (repo)
 ├── CLAUDE.md  PLAN.md  MILESTONES.md  PROJECT.md  IDEAS.md  README.md  LICENSE  .gitignore
-├── Parachute.xcodeproj            (created in Phase 0)
+├── Untax.xcodeproj            (created in Phase 0)
 ├── App/                           composition root, tab bar (Home · Money · Tasks · Scoreboard)
 ├── Widgets/                       (B) countdown + current-step widgets
 ├── ShareExtension/                (A) screenshot → "Track it?"
-├── Packages/SharedKit · MoneyKit · ParachuteKit (each with Tests/)
+├── Packages/SharedKit · MoneyKit · UntaxKit (each with Tests/)
 ├── docs/                          interfaces.md · demo-script.md · cancel-steps-verification.md
 └── research/                      background evidence (read-only)
 ```
@@ -184,7 +184,7 @@ Structure: hook → two taxes → thesis → money flow with the freeze → task
 README: icon + 3 screenshots · pitch · Mermaid architecture · badges · **"How RevenueCat is used"** · build steps · privacy · MIT. Code: Swift 6.4 strict concurrency · package boundaries respected · tests (date math, escalation, alarm re-arm, CancelSteps validity, atomizer schema) · no secrets · no Test Store key in Release.
 
 ## 12. Team, eligibility, submission
-- **Dev A (you):** Money path (the Untax half). **Dev B (friend):** Unfreeze (unfreeze + tasks, `ParachuteKit`). Details: `MILESTONES.md`.
+- **Dev A (you):** Money path (the Untax half). **Dev B (friend):** Unfreeze (unfreeze + tasks, `UntaxKit`). Details: `MILESTONES.md`.
 - 🟡 **Representative:** one of you submits on Devpost and allocates any prize.
 - ⚠️ Both confirm: a student/academic email on Devpost; guardian consent if under 18.
 

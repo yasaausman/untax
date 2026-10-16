@@ -13,7 +13,7 @@ From `MILESTONES.md`:
 
 Pass bar: **Tasks ≥ 15/20** and **Services ≥ 7/10**.
 
-## 2. Prompt and schema (verbatim from `Packages/ParachuteKit/Sources/ParachuteKit/Unfreeze/AIAtomizer.swift`)
+## 2. Prompt and schema (verbatim from `Packages/UntaxKit/Sources/UntaxKit/Unfreeze/AIAtomizer.swift`)
 
 If `AIAtomizer.swift` changes before the run, re-copy this section so the results match the prompt that produced them.
 

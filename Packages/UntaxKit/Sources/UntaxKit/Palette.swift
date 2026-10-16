@@ -1,7 +1,7 @@
 import SharedKit
 import SwiftUI
 
-/// ParachuteKit's names for SharedKit's contrast-safe `Theme` colors (P1).
+/// UntaxKit's names for SharedKit's contrast-safe `Theme` colors (P1).
 enum Palette {
     static let frozenFill = Theme.frozenFill
     static let frozenInk = Theme.frozenText

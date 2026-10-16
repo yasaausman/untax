@@ -13,7 +13,7 @@ public struct UnfreezeFlowView: View {
     let win: CelebrationView.Win?
     let onFinish: (UnfreezeOutcome) -> Void
 
-    @Environment(\.parachute) private var services
+    @Environment(\.untax) private var services
     @State private var plan: UnfreezePlan?
 
     public init(request: UnfreezeRequest, win: CelebrationView.Win? = nil, onFinish: @escaping (UnfreezeOutcome) -> Void) {

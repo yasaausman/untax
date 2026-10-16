@@ -54,7 +54,7 @@ public struct HomeView: View {
                     Button("Debug", systemImage: "ladybug") { showingDebug = true }
                 }
             }
-            .sheet(isPresented: $showingDebug) { ParachuteDebugView() }
+            .sheet(isPresented: $showingDebug) { UntaxDebugView() }
             #endif
             .sheet(isPresented: $showingEntry) { FrozenTaskEntryView() }
             .fullScreenCover(item: $playing) { task in

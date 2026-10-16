@@ -1,4 +1,4 @@
-# IDEAS.md: Parachute feature backlog
+# IDEAS.md: Untax feature backlog
 
 Every idea I could think of, grouped so it's easy to prune. **Nothing here is committed** — the MVP in `PLAN.md` is only the rows tagged `MVP`.
 

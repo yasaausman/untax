@@ -7,7 +7,7 @@ import SwiftUI
 public struct FrozenTaskEntryView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.parachute) private var services
+    @Environment(\.untax) private var services
 
     @State private var title = ""
     @State private var hasDueDate = false

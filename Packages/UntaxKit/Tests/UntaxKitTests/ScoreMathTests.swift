@@ -1,6 +1,6 @@
 import XCTest
 import SharedKit
-@testable import ParachuteKit
+@testable import UntaxKit
 
 /// B6 "Done when": the numbers are right after cancel, keep (no $), task done, and snooze (nothing).
 final class ScoreMathTests: XCTestCase {

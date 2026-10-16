@@ -7,5 +7,5 @@ BUNDLE_ID_PREFIX = com.example
 
 #include? "Local.xcconfig"
 
-PARACHUTE_BUNDLE_ID = $(BUNDLE_ID_PREFIX).parachute
-PARACHUTE_APP_GROUP = group.$(BUNDLE_ID_PREFIX).parachute
+UNTAX_BUNDLE_ID = $(BUNDLE_ID_PREFIX).untax
+UNTAX_APP_GROUP = group.$(BUNDLE_ID_PREFIX).untax

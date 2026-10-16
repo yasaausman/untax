@@ -29,9 +29,9 @@
 ## Already verified (build time, 2026-09-25)
 - ✅ AlarmKit API from the iOS 27 SDK's `AlarmKit.swiftinterface`: `AlarmManager.AlarmConfiguration.alarm(schedule:attributes:stopIntent:secondaryIntent:sound:)`; both intents are `LiveActivityIntent`; `Alert.SecondaryButtonBehavior` is `.countdown` or `.custom`. `Alert(title:stopButton:…)` is deprecated in iOS 26.1 (Stop is system-provided), so the spike uses `Alert(title:secondaryButton:secondaryButtonBehavior:)` behind `#available(iOS 26.1, *)`.
 - ✅ Apple docs ([Scheduling an alarm with AlarmKit](https://developer.apple.com/documentation/alarmkit/scheduling-an-alarm-with-alarmkit)): *"If the `NSAlarmKitUsageDescription` key is missing or its value is an empty string, apps can't schedule alarms with AlarmKit."*
-- ✅ App Intents defined in the MoneyKit **Swift package** reach the app: `SpikeStopIntent` and `SpikeDecideIntent` appear in `Parachute.app/Metadata.appintents` via `MoneyKitIntentsPackage` → `ParachuteAppIntentsPackage`.
+- ✅ App Intents defined in the MoneyKit **Swift package** reach the app: `SpikeStopIntent` and `SpikeDecideIntent` appear in `Untax.app/Metadata.appintents` via `MoneyKitIntentsPackage` → `UntaxAppIntentsPackage`.
 - ✅ `openAppWhenRun` is deprecated in iOS 26 (*"Please provide 'supportedModes' instead"*), so Decide uses `supportedModes = .foreground`.
-- ✅ Free personal team signs all three targets with the App Group `group.<prefix>.parachute` (checked with `codesign -d --entitlements`).
+- ✅ Free personal team signs all three targets with the App Group `group.<prefix>.untax` (checked with `codesign -d --entitlements`).
 
 ## Observations for A4 (the real alarm)
 - **Locked:** full screen. Title, time, app name, a big tinted **Decide** button, and a system **slide to stop** at the bottom. Users hit Decide by accident (happened twice in testing), which is fine: Decide is the "good" path.

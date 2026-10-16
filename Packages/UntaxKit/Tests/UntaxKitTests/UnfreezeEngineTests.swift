@@ -1,6 +1,6 @@
 import XCTest
 import SharedKit
-@testable import ParachuteKit
+@testable import UntaxKit
 
 /// Records calls and returns fixed steps, so the tests don't depend on Apple Intelligence.
 private struct StubAtomizer: StepAtomizing {

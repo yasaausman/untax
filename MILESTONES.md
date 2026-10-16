@@ -3,7 +3,7 @@
 | | Owns | Code lives in |
 |---|---|---|
 | **Dev A: You (Money / "Untax" lead)** | Capturing money deadlines, escalation + alarm, Decide screen, curated cancel-step content, RevenueCat paywall | `Packages/MoneyKit`, `ShareExtension/` |
-| **Dev B: Your friend (Unfreeze lead)** | Unfreeze engine + player, AI atomizer, task path, audio companion, scoreboard + celebration, widgets | `Packages/ParachuteKit`, `Widgets/` |
+| **Dev B: Your friend (Unfreeze lead)** | Unfreeze engine + player, AI atomizer, task path, audio companion, scoreboard + celebration, widgets | `Packages/UntaxKit`, `Widgets/` |
 | **Both** | Models, protocols, design system, app shell, polish, README, video | `Packages/SharedKit`, `App/`, `docs/` |
 
 **Dates assume the Sep 30, 2026, 11:45pm PDT deadline** (convert to your time zone). If you take longer, keep the same order and stretch the days.
@@ -27,7 +27,7 @@ Every milestone has a **Done when**. Nothing is done until it runs on a real iPh
 
 ### Together (≈1.5 h, pair on one screen)
 - [ ] **S0.1 Repo + project.**
-  *Status (2026-09-28):* public repo, XcodeGen project, 3 packages, RevenueCat 5.91.0; runs on Dev A's iPhone; Dev B builds and runs in the simulator. ☐ Dev B on their own iPhone. `git init`, push to a **public** GitHub repo. Create `Parachute.xcodeproj` (App + Widgets + ShareExtension targets, one App Group, deployment target iOS 26, Swift 6 language mode) and the three local packages. Add RevenueCat `purchases-ios` **5.91.0** via SPM.
+  *Status (2026-09-28):* public repo, XcodeGen project, 3 packages, RevenueCat 5.91.0; runs on Dev A's iPhone; Dev B builds and runs in the simulator. ☐ Dev B on their own iPhone. `git init`, push to a **public** GitHub repo. Create `Untax.xcodeproj` (App + Widgets + ShareExtension targets, one App Group, deployment target iOS 26, Swift 6 language mode) and the three local packages. Add RevenueCat `purchases-ios` **5.91.0** via SPM.
   *Done when:* both of you clone, build, and run the empty app on your own iPhones.
 - [ ] **S0.2 Contracts.**
   *Status (2026-09-28):* all models, protocols and fakes in SharedKit; Dev B's PR #1 builds on them and adds "As implemented (B)" notes to `docs/interfaces.md`. ☐ Both devs say "agreed" (a one-line note from Dev B is enough). Put the models + protocols from `docs/interfaces.md` into `SharedKit`, with **fake implementations** in `SharedKit/Fakes`.

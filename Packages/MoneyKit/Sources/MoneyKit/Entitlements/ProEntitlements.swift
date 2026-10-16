@@ -22,7 +22,7 @@ public final class ProEntitlements: EntitlementsProviding {
     public static let entitlementID = "parachute_pro"
     static let forceProKey = "debug.forcePro"
     static let overrideKey = "debug.proOverride"
-    static let trialReminderID = "parachute.pro.trial"
+    static let trialReminderID = "untax.pro.trial"
 
     /// Debug builds can pretend either way, to test and film both tiers on a phone that already bought Pro.
     public enum DebugOverride: String, CaseIterable, Sendable {

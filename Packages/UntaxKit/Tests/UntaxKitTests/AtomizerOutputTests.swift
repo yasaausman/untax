@@ -1,6 +1,6 @@
 import XCTest
 import SharedKit
-@testable import ParachuteKit
+@testable import UntaxKit
 
 /// Atomizer output schema (CLAUDE.md: tests for atomizer output) and "Break it smaller" edits.
 final class AtomizerOutputTests: XCTestCase {

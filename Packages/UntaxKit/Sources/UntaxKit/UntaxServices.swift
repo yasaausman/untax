@@ -2,9 +2,9 @@ import SharedKit
 import SwiftUI
 import WidgetKit
 
-/// Everything ParachuteKit's screens need, injected once by the app:
-/// `.environment(\.parachute, ParachuteServices(...))`.
-public struct ParachuteServices: Sendable {
+/// Everything UntaxKit's screens need, injected once by the app:
+/// `.environment(\.untax, UntaxServices(...))`.
+public struct UntaxServices: Sendable {
     public var engine: UnfreezeEngine
     public var ledger: any CompletionLedger
     /// Dev A's `EscalationScheduling` (B5). Nil in previews.
@@ -24,7 +24,7 @@ public struct ParachuteServices: Sendable {
     }
 
     /// Fakes for previews: Pro unlocked, nothing persisted.
-    public static let preview = ParachuteServices(
+    public static let preview = UntaxServices(
         engine: UnfreezeEngine(),
         ledger: InMemoryLedger(),
         scheduler: nil,
@@ -35,7 +35,7 @@ public struct ParachuteServices: Sendable {
 }
 
 public extension EnvironmentValues {
-    @Entry var parachute: ParachuteServices = .preview
+    @Entry var untax: UntaxServices = .preview
 }
 
 enum WidgetRefresh {

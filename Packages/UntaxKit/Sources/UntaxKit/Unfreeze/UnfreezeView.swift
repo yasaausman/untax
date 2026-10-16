@@ -12,7 +12,7 @@ public struct UnfreezeView: View {
     private let onProgress: ((_ steps: [PlanStep], _ nextIndex: Int) -> Void)?
     private let onFinish: (UnfreezeOutcome) -> Void
 
-    @Environment(\.parachute) private var services
+    @Environment(\.untax) private var services
     @Environment(\.openURL) private var openURL
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     private var isLarge: Bool { dynamicTypeSize.isAccessibilitySize }

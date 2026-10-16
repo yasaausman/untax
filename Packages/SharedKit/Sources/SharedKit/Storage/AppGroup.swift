@@ -2,10 +2,10 @@ import Foundation
 import SwiftData
 
 /// The App Group shared by the app, widgets, and share extension.
-/// Each target's Info.plist carries `ParachuteAppGroup` (set from `PARACHUTE_APP_GROUP` in Config/Base.xcconfig),
+/// Each target's Info.plist carries `UntaxAppGroup` (set from `UNTAX_APP_GROUP` in Config/Base.xcconfig),
 /// so every developer can use their own bundle ID prefix.
 public enum AppGroup {
-    public static let infoPlistKey = "ParachuteAppGroup"
+    public static let infoPlistKey = "UntaxAppGroup"
 
     public static var identifier: String? {
         Bundle.main.object(forInfoDictionaryKey: infoPlistKey) as? String

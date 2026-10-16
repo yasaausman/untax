@@ -3,12 +3,12 @@
 Read this first in every session. Then read `PROJECT.md` (living state) and `MILESTONES.md` (who does what).
 
 ## What this is
-**Untax** (formerly Parachute; code modules, targets, and bundle IDs keep the old name): an iOS app, the ADHD follow-through engine. Brand: `docs/brand/BRAND.md`. It catches money deadlines (free trials) and escalates until you act. When you freeze, on a cancellation or a deadline task, it walks you through one tiny step at a time and puts every win on an "ADHD Tax Refunded" scoreboard.
+**Untax**: an iOS app, the ADHD follow-through engine. Brand: `docs/brand/BRAND.md`. It catches money deadlines (free trials) and escalates until you act. When you freeze, on a cancellation or a deadline task, it walks you through one tiny step at a time and puts every win on an "ADHD Tax Refunded" scoreboard.
 Built for **RevenueCat Shipaton 2026, Next Gen Award** (students). Full plan: `PLAN.md`.
 
 ## Team & ownership
 - **Dev A (Money / "Untax" lead):** `Packages/MoneyKit`: capture (manual + share extension), extraction, escalation, AlarmKit alarm, Decide screen, curated `CancelSteps.json` content, RevenueCat paywall + entitlements.
-- **Dev B (Unfreeze lead):** `Packages/ParachuteKit` + `Widgets` target: Unfreeze engine and player, AI atomizer, task path, audio companion, scoreboard + celebration, widgets.
+- **Dev B (Unfreeze lead):** `Packages/UntaxKit` + `Widgets` target: Unfreeze engine and player, AI atomizer, task path, audio companion, scoreboard + celebration, widgets.
 - **Both:** `Packages/SharedKit` (models, protocols, design system). Changes to SharedKit need the other person's review.
 - Ask which dev you're working with at the start of a session if it isn't obvious, and stay inside that dev's area unless asked.
 

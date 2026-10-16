@@ -3,7 +3,7 @@ import SwiftData
 import SwiftUI
 
 /// A5: the Decide screen. Opened by the alarm's Decide button, a reminder tap, or a trial row.
-/// Cancel · Get unstuck · Keep · Snooze. Never imports ParachuteKit: "Get unstuck" is a closure.
+/// Cancel · Get unstuck · Keep · Snooze. Never imports UntaxKit: "Get unstuck" is a closure.
 public struct DecideView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss

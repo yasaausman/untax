@@ -25,7 +25,7 @@
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.widgetkit-extension</string>
 	</dict>
-	<key>ParachuteAppGroup</key>
-	<string>$(PARACHUTE_APP_GROUP)</string>
+	<key>UntaxAppGroup</key>
+	<string>$(UNTAX_APP_GROUP)</string>
 </dict>
 </plist>

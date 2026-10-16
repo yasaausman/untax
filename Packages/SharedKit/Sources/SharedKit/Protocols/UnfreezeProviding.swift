@@ -1,6 +1,6 @@
 import Foundation
 
-/// Implemented by Dev B (ParachuteKit). Used by the App when Decide → "Get unstuck".
+/// Implemented by Dev B (UntaxKit). Used by the App when Decide → "Get unstuck".
 public protocol UnfreezeProviding: Sendable {
     func plan(for request: UnfreezeRequest) async throws -> UnfreezePlan
 }

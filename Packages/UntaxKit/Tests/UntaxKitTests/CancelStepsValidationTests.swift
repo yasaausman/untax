@@ -1,6 +1,6 @@
 import XCTest
 import SharedKit
-@testable import ParachuteKit
+@testable import UntaxKit
 
 final class CancelStepsValidationTests: XCTestCase {
     /// SharedKit's types have no public memberwise init, so fixtures go through JSON like the real file.

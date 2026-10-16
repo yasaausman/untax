@@ -1,6 +1,6 @@
 import MoneyKit
 import Observation
-import ParachuteKit
+import UntaxKit
 import SharedKit
 import SwiftData
 
@@ -10,7 +10,7 @@ final class AppDependencies {
     /// MoneyKit's concrete scheduler; `escalation` is the same object behind the shared protocol.
     let moneyEscalation: EscalationScheduler
     var escalation: any EscalationScheduling { moneyEscalation }
-    /// ParachuteKit's engine; `unfreeze` is the same object behind the shared protocol.
+    /// UntaxKit's engine; `unfreeze` is the same object behind the shared protocol.
     let unfreezeEngine: UnfreezeEngine
     var unfreeze: any UnfreezeProviding { unfreezeEngine }
     /// MoneyKit's RevenueCat-backed entitlements; `entitlements` is the same object for B's gating.
@@ -42,8 +42,8 @@ final class AppDependencies {
         )
     }
 
-    /// What ParachuteKit's screens read from `\.parachute`.
-    var parachute: ParachuteServices {
-        ParachuteServices(engine: unfreezeEngine, ledger: ledger, scheduler: escalation, entitlements: entitlements)
+    /// What UntaxKit's screens read from `\.untax`.
+    var untax: UntaxServices {
+        UntaxServices(engine: unfreezeEngine, ledger: ledger, scheduler: escalation, entitlements: entitlements)
     }
 }

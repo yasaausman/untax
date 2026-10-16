@@ -4,7 +4,7 @@ import SharedKit
 import SwiftData
 
 /// P2: realistic data for the demo video ("$214 back · 12 tasks · best run 5 days", docs/demo-script.md).
-/// Replaces Parachute's own records and tasks; adds money deadlines only when there are none (they're Dev A's).
+/// Replaces Untax's own records and tasks; adds money deadlines only when there are none (they're Dev A's).
 /// Only Apple-billed trials go to Apple's page (CLAUDE.md rule 8).
 @MainActor
 public enum DemoDataSeeder {

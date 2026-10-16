@@ -3,16 +3,16 @@ import PackageDescription
 
 // Dev B: Unfreeze engine + player, atomizer, task path, audio, scoreboard.
 let package = Package(
-    name: "ParachuteKit",
+    name: "UntaxKit",
     platforms: [.iOS(.v26)],
     products: [
-        .library(name: "ParachuteKit", targets: ["ParachuteKit"]),
+        .library(name: "UntaxKit", targets: ["UntaxKit"]),
     ],
     dependencies: [
         .package(path: "../SharedKit"),
     ],
     targets: [
-        .target(name: "ParachuteKit", dependencies: ["SharedKit"]),
-        .testTarget(name: "ParachuteKitTests", dependencies: ["ParachuteKit"]),
+        .target(name: "UntaxKit", dependencies: ["SharedKit"]),
+        .testTarget(name: "UntaxKitTests", dependencies: ["UntaxKit"]),
     ]
 )

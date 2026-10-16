@@ -167,7 +167,7 @@ struct MoneyWidgetView: View {
 
     var body: some View {
         content
-            .widgetURL(URL(string: "parachute://money"))
+            .widgetURL(URL(string: "untax://money"))
             .containerBackground(for: .widget) {
                 if family == .accessoryRectangular {
                     Color.clear
@@ -340,7 +340,7 @@ struct TaskWidgetView: View {
 
     var body: some View {
         content
-            .widgetURL(URL(string: "parachute://tasks"))
+            .widgetURL(URL(string: "untax://tasks"))
             .containerBackground(for: .widget) {
                 if family == .accessoryRectangular {
                     Color.clear
@@ -452,7 +452,7 @@ extension TaskEntry {
 // MARK: - Widget Bundle
 
 @main
-struct ParachuteWidgetBundle: WidgetBundle {
+struct UntaxWidgetBundle: WidgetBundle {
     var body: some Widget {
         MoneyWidget()
         TaskWidget()

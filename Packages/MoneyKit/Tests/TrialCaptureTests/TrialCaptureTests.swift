@@ -11,16 +11,16 @@ import Testing
     static func day(_ y: Int, _ m: Int, _ d: Int) -> Date {
         calendar.date(from: DateComponents(year: y, month: m, day: d))!
     }
-    let now = Self.calendar.date(from: DateComponents(year: 2026, month: 9, day: 27, hour: 12))!
+    let now = Self.calendar.date(from: DateComponents(year: 2036, month: 9, day: 27, hour: 12))!
 
     @Test func endOfADetectedRangeIsTheChargeDay() {
-        let text = "After your trial ends on October 26, 2026, you'll be charged $11.99/month."
-        #expect(PatternExtractor.chargeDate(in: text, now: now, calendar: Self.calendar) == Self.day(2026, 10, 26))
+        let text = "After your trial ends on October 26, 2036, you'll be charged $11.99/month."
+        #expect(PatternExtractor.chargeDate(in: text, now: now, calendar: Self.calendar) == Self.day(2036, 10, 26))
     }
 
     @Test func wordsLikeTodayAreNotDates() {
-        let text = "Free trial ends Oct 10, 2026\nToday's total: US$0.00"
-        #expect(PatternExtractor.chargeDate(in: text, now: now, calendar: Self.calendar) == Self.day(2026, 10, 10))
+        let text = "Free trial ends Oct 10, 2036\nToday's total: US$0.00"
+        #expect(PatternExtractor.chargeDate(in: text, now: now, calendar: Self.calendar) == Self.day(2036, 10, 10))
     }
 
     /// Dev A's iPhone, 2026-09-28: Settings → Subscriptions with everything cancelled came back as
@@ -50,14 +50,14 @@ import Testing
     @Test func clockTimesAreNotDates() {
         #expect(!PatternExtractor.looksLikeCalendarDate("5:44"))
         #expect(!PatternExtractor.looksLikeCalendarDate("Today"))
-        #expect(PatternExtractor.looksLikeCalendarDate("Oct 26, 2026"))
-        #expect(PatternExtractor.looksLikeCalendarDate("10/3/2026"))
-        #expect(PatternExtractor.looksLikeCalendarDate("7 Dec 2026"))
+        #expect(PatternExtractor.looksLikeCalendarDate("Oct 26, 2036"))
+        #expect(PatternExtractor.looksLikeCalendarDate("10/3/2036"))
+        #expect(PatternExtractor.looksLikeCalendarDate("7 Dec 2036"))
     }
 
     @Test func trialLengthCountsFromToday() {
-        #expect(PatternExtractor.chargeDate(in: "14-day free trial\nThen $12.99/month", now: now, calendar: Self.calendar) == Self.day(2026, 10, 11))
-        #expect(PatternExtractor.chargeDate(in: "1-month free trial", now: now, calendar: Self.calendar) == Self.day(2026, 10, 27))
+        #expect(PatternExtractor.chargeDate(in: "14-day free trial\nThen $12.99/month", now: now, calendar: Self.calendar) == Self.day(2036, 10, 11))
+        #expect(PatternExtractor.chargeDate(in: "1-month free trial", now: now, calendar: Self.calendar) == Self.day(2036, 10, 27))
     }
 
     @Test func recurringPriceBeatsZeroAndOneTimeAmounts() {
@@ -90,8 +90,8 @@ import Testing
 
 @Suite struct AIFactCheckTests {
     let calendar = PatternExtractorTests.calendar
-    let now = PatternExtractorTests.calendar.date(from: DateComponents(year: 2026, month: 9, day: 27, hour: 12))!
-    let text = "Spotify\nAfter your trial ends on October 26, 2026, you'll be charged $11.99/month."
+    let now = PatternExtractorTests.calendar.date(from: DateComponents(year: 2036, month: 9, day: 27, hour: 12))!
+    let text = "Spotify\nAfter your trial ends on October 26, 2036, you'll be charged $11.99/month."
 
     func merged(_ answer: AIExtractor.Answer) -> TrialCandidate {
         let patterns = PatternExtractor.extract(from: text, now: now, calendar: calendar)
@@ -99,9 +99,9 @@ import Testing
     }
 
     @Test func agreeingAnswerIsKept() {
-        let result = merged(.init(serviceName: "Spotify", price: 11.99, chargeDate: "2026-10-26", billedByApple: false))
+        let result = merged(.init(serviceName: "Spotify", price: 11.99, chargeDate: "2036-10-26", billedByApple: false))
         #expect(result.amountCents == 1199)
-        #expect(result.chargeDate == PatternExtractorTests.day(2026, 10, 26))
+        #expect(result.chargeDate == PatternExtractorTests.day(2036, 10, 26))
         #expect(result.source == .ai)
     }
 
@@ -110,13 +110,13 @@ import Testing
     }
 
     @Test func aDateNotInTheTextIsIgnored() {
-        #expect(merged(.init(serviceName: "Spotify", price: 0, chargeDate: "2026-10-01", billedByApple: false)).chargeDate == PatternExtractorTests.day(2026, 10, 26))
+        #expect(merged(.init(serviceName: "Spotify", price: 0, chargeDate: "2036-10-01", billedByApple: false)).chargeDate == PatternExtractorTests.day(2036, 10, 26))
     }
 
     @Test func aNameNotInTheTextIsIgnoredAndAppleNeedsEvidence() {
-        let odd = "Premium Student\nYour next bill is for $6.99 on 10/10/2026."
+        let odd = "Premium Student\nYour next bill is for $6.99 on 10/10/2036."
         let patterns = PatternExtractor.extract(from: odd, now: now, calendar: calendar)
-        let result = TrialExtractor.merge(ai: .init(serviceName: "Netflix", price: 6.99, chargeDate: "2026-10-10", billedByApple: true), patterns: patterns, text: odd, now: now, calendar: calendar)
+        let result = TrialExtractor.merge(ai: .init(serviceName: "Netflix", price: 6.99, chargeDate: "2036-10-10", billedByApple: true), patterns: patterns, text: odd, now: now, calendar: calendar)
         #expect(result.serviceName == nil)
         #expect(result.billedByApple == false)
     }
